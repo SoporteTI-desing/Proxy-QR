@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Centros Sanaré — Sedes</title>
+<link as="style" href="assets/css/style.css" rel="preload"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Video Header with centered logo -->
+<section class="video-header">
+<video autoplay="" class="vh-video" loop="" muted="" playsinline="" src="assets/video/header.mp4"></video>
+<div class="vh-brand"><img alt="Sanaré" class="vh-logo" src="assets/img/logo.png"/></div>
+<div class="vh-overlay"></div>
+</section>
+<header class="hero">
+<div class="hero-inner">
+<h1>Clínica de Infusión</h1>
+<div class="buttons">
+<button class="btn btn-primary" data-sede="narvarte">Sede Narvarte</button>
+<button class="btn" data-sede="toluca">Sede Toluca</button>
+<a class="btn btn-link" href="https://sanaresalud.com" rel="noopener" target="_blank">sanaresalud.com</a>
+</div>
+</div>
+</header>
+<!-- Modal Gallery -->
+<div aria-hidden="true" class="lightbox" id="lightbox">
+<div class="lightbox-backdrop" data-close=""></div>
+<div aria-label="Galería de imágenes" aria-modal="true" class="lightbox-content" role="dialog">
+<button aria-label="Cerrar" class="close" data-close="">×</button>
+<div class="stage" id="stage">
+<img alt="Foto de la sede" id="lightbox-image"/>
+</div>
+<div class="toolbar">
+<button aria-label="Anterior" class="nav" id="prev">‹</button>
+<div class="counter"><span id="current">1</span> / <span id="total">1</span></div>
+<button aria-label="Siguiente" class="nav" id="next">›</button>
+</div>
+<div class="location-bar" id="locationBar" style="display:none"><span>Ubicación: </span><a href="#" id="locationLink" rel="noopener" target="_blank">Abrir en Google Maps / Búsqueda</a></div><div class="hint">Doble clic para zoom • Arrastra para mover • Esc para cerrar</div>
+<div aria-hidden="true" class="map-card" id="mapCard"><div class="map-card-header"><div class="map-card-title" id="mapTitle">Ubicación</div><button aria-label="Ocultar mapa" class="map-card-close" id="mapClose">×</button></div><iframe allowfullscreen="True" id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank" title="Mapa de la sede"></iframe><div class="map-card-footer"><a href="#" id="mapExternal" rel="noopener" target="_blank">Abrir en Google Maps</a></div></div><button aria-label="Ver ubicación" class="map-toggle" id="mapToggle" type="button">Mapa</button></div>
+<!-- Speech bubble greeting -->
+<div id="sanare-ai-bubble">¿Cómo estás? ¿En qué puedo ayudarte?</div>
+</div>
+<script>
+  window.__IMAGES__ = {
+    narvarte: ["sedes/narvarte/img_01.jpeg", "sedes/narvarte/img_02.jpeg", "sedes/narvarte/img_03.jpeg", "sedes/narvarte/img_04.jpeg", "sedes/narvarte/img_05.jpeg", "sedes/narvarte/img_06.jpeg", "sedes/narvarte/img_07.jpeg", "sedes/narvarte/img_08.jpeg", "sedes/narvarte/img_09.jpeg", "sedes/narvarte/img_10.jpeg", "sedes/narvarte/img_11.jpeg", "sedes/narvarte/img_12.jpeg", "sedes/narvarte/img_13.jpeg", "sedes/narvarte/img_14.jpeg", "sedes/narvarte/img_15.jpeg", "sedes/narvarte/img_16.jpeg"],
+    toluca: ["sedes/toluca/img_01.jpeg", "sedes/toluca/img_02.jpeg", "sedes/toluca/img_03.jpeg", "sedes/toluca/img_04.jpeg", "sedes/toluca/img_05.jpeg", "sedes/toluca/img_06.jpeg", "sedes/toluca/img_07.jpeg", "sedes/toluca/img_08.png", "sedes/toluca/img_09.jpeg", "sedes/toluca/img_10.jpeg", "sedes/toluca/img_11.jpeg", "sedes/toluca/img_12.jpeg", "sedes/toluca/img_13.jpeg", "sedes/toluca/img_14.jpeg", "sedes/toluca/img_15.jpeg", "sedes/toluca/img_16.png"]
+  };
+  </script>
+<script src="assets/js/app.js"></script><script>
+(function(){
+  const embedUrls = {
+    narvarte: "https://www.google.com/maps?q=Sanar%C3%A9+Cl%C3%ADnica+de+Oncolog%C3%ADa+Anax%C3%A1goras+301+Narvarte+CDMX&output=embed",
+    toluca:   "https://www.google.com/maps?q=Sanar%C3%A9+Toluca&output=embed"
+  };
+  const directLinks = {
+    narvarte: "https://www.google.com/maps/search/?api=1&query=Sanar%C3%A9%20Cl%C3%ADnica%20de%20Oncolog%C3%ADa%20Anax%C3%A1goras%20301%20Narvarte%20CDMX",
+    toluca:   "https://www.google.com/maps/search/?api=1&query=Sanar%C3%A9%20Toluca"
+  };
+
+  let currentSede = null;
+  const lb = document.getElementById('lightbox');
+  const toggle = document.getElementById('mapToggle');
+  const card = document.getElementById('mapCard');
+  const frame = document.getElementById('mapFrame');
+  const link = document.getElementById('mapExternal');
+  const title = document.getElementById('mapTitle');
+  const close = document.getElementById('mapClose');
+
+  function updateMap(){
+    if(!currentSede || !embedUrls[currentSede]){
+      card.setAttribute('aria-hidden','true');
+      card.style.display = 'none';
+      return;
+    }
+    frame.src = embedUrls[currentSede];
+    link.href = directLinks[currentSede] || '#';
+    title.textContent = currentSede === 'narvarte' ? 'Sanaré Narvarte' : 'Sanaré Toluca';
+  }
+
+  function showCard(){ updateMap(); card.style.display='grid'; card.setAttribute('aria-hidden','false'); }
+  function hideCard(){ card.style.display='none'; card.setAttribute('aria-hidden','true'); }
+
+  toggle.addEventListener('click', ()=>{
+    if(card.getAttribute('aria-hidden')==='true'){ showCard(); } else { hideCard(); }
+  });
+  close.addEventListener('click', hideCard);
+
+  document.querySelectorAll('[data-sede]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      currentSede = btn.getAttribute('data-sede');
+      lb.dataset.sede = currentSede;
+      updateMap();
+      hideCard(); // start hidden until user hits "Mapa"
+    }, {capture:true});
+  });
+
+  hideCard();
+})();
+</script><script>
+(function(){
+  const sedeLinks = {
+    narvarte: "https://www.google.com/search?q=sanar%C3%A9&oq=sanar%C3%A9+&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGIAEMgYIAhBFGEAyBggDEEUYOzIHCAQQABiABDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDQyNzZqMGo5qAIBsAIB8QWNVOg3C_5eEQ&sourceid=chrome&ie=UTF-8&lqi=CgdzYW5hcsOpSKmQ4aP0u4CACFoNEAAYACIHc2FuYXLDqZIBEml2X3RoZXJhcHlfc2VydmljZQ#rlimm=7535362148702032958",
+    toluca: "https://www.google.com/search?q=sanar%C3%A9+Toluca&sca_esv=2369d6cd51414d5b&ei=oN8EaZ-YG_bLkPIP2Nqr6AY&ved=0ahUKEwif6Jfq6c6QAxX2JUQIHVjtCm0Q4dUDCBM&uact=5&oq=sanar%C3%A9+Toluca&gs_lp=Egxnd3Mtd2l6LXNlcnAiDnNhbmFyw6kgVG9sdWNhMgUQABiABDIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESLIiUM0EWLgZcAF4AZABAJgBqAGgAbEIqgEDMC43uAEDyAEA-AEBmAIIoAL2CMICChAAGLADGNYEGEfCAgoQABiABBhDGIoFwgIFEC4YgATCAgQQABgewgIGEAAYFhgemAMAiAYBkAYGkgcDMS43oAeiJrIHAzAuN7gH6QjCBwUyLTYuMsgHNA&sclient=gws-wiz-serp&lqi=Cg5zYW5hcsOpIFRvbHVjYVoQIg5zYW5hcsOpIHRvbHVjYZIBCm9uY29sb2dpc3Q#rlimm=15311468634149742196"
+  };
+  let currentSede = null;
+  const lb = document.getElementById('lightbox');
+  const linkEl = document.getElementById('locationLink');
+  const barEl  = document.getElementById('locationBar');
+  function updateLink(){
+    if(!currentSede || !sedeLinks[currentSede]){
+      barEl.style.display = 'none';
+      return;
+    }
+    barEl.style.display = 'flex';
+    linkEl.href = sedeLinks[currentSede];
+  }
+  // Hook the sede buttons
+  document.querySelectorAll('[data-sede]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      const s = btn.getAttribute('data-sede');
+      currentSede = s;
+      updateLink();
+      // Mark on the lightbox which sede is active (for potential use by other scripts)
+      lb.dataset.sede = s;
+    }, {capture:true}); // capture to run even if other listeners stop propagation
+  });
+  // Also update when lightbox becomes visible (in case it opens by other triggers)
+  const observer = new MutationObserver(updateLink);
+  observer.observe(lb, { attributes:true, attributeFilter:['aria-hidden','class','data-sede'] });
+  // Initialize hidden
+  barEl.style.display = 'none';
+})();
+</script>
+<!-- Legend Footer -->
+<footer id="sanare-legend" style="width:100%;text-align:center;padding:14px 8px;margin-top:32px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans','Apple Color Emoji','Segoe UI Emoji';letter-spacing:.5px">
+<div style="display:inline-block;padding:10px 18px;border-radius:999px;background:#fff;color:#0A497B;border:1px solid rgba(10,73,123,.15);box-shadow:0 6px 18px rgba(10,73,123,.08);font-weight:600;text-transform:uppercase;font-size:13px">
+      Centros de Infusión 2025
+    </div>
+</footer>
+<style id="sanare-ai-bubble-style">
+    #sanare-ai-bubble {
+      position: fixed; right: 92px; bottom: 36px; z-index: 10000;
+      background: #ffffff; color: #0A497B; border: 1px solid rgba(10,73,123,.15);
+      padding: 10px 12px; border-radius: 12px; box-shadow: 0 10px 24px rgba(10,73,123,.12);
+      max-width: 260px; font-size: 13px; line-height: 1.25; display: none;
+    }
+    #sanare-ai-bubble::after {
+      content: ""; position: absolute; right: -8px; bottom: 12px;
+      border-width: 8px; border-style: solid;
+      border-color: transparent transparent transparent #ffffff;
+      filter: drop-shadow(-1px 1px 0 rgba(10,73,123,.15));
+    }
+    .sanare-bubble-show { display:block; animation: sanareBubbleIn .18s ease-out both; }
+    @keyframes sanareBubbleIn {
+      0% { transform: translateY(6px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+<style id="sanare-ai-style">
+    @keyframes sanarePulse { 
+      0% { transform: translateZ(0) scale(1); box-shadow: 0 10px 30px rgba(10,73,123,.28), 0 0 0 0 rgba(10,73,123,.25); }
+      70% { box-shadow: 0 10px 30px rgba(10,73,123,.28), 0 0 0 14px rgba(10,73,123,0); }
+      100% { transform: translateZ(0) scale(1); box-shadow: 0 10px 30px rgba(10,73,123,.28), 0 0 0 0 rgba(10,73,123,0); }
+    }
+    #sanare-ai-button { transition: transform .15s ease, filter .2s ease; }
+    #sanare-ai-button:hover { transform: translateY(-2px); filter: brightness(1.03); }
+    .sanare-bot-avatar {
+      width: 58px; height: 58px; border-radius: 999px;
+      background: radial-gradient(120px 120px at 30% 20%, #2b6aa1 0%, #0A497B 60%);
+      display:flex; align-items:center; justify-content:center;
+      animation: sanarePulse 2.8s ease-out infinite;
+    }
+    .sanare-bot-avatar svg {
+      width: 30px; height: 30px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
+    }
+    .sanare-bot-label {
+      background:#ffffff; padding:10px 12px; border-radius:999px;
+      border:1px solid rgba(10,73,123,.15); font-size:12px; color:#0A497B;
+      box-shadow:0 6px 18px rgba(10,73,123,.08); font-weight:700; letter-spacing:.2px;
+      user-select:none;
+    }
+  </style>
+<div aria-label="Abrir asistente IA" id="sanare-ai-button" style="position:fixed; right:18px; bottom:18px; z-index:9999; display:flex; align-items:center; gap:10px; cursor:pointer;" title="Asesor IA">
+<div aria-label="Chatbot Sanaré" class="sanare-bot-avatar" role="img">
+<!-- Friendly bot SVG -->
+<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+<defs>
+<lineargradient id="g1" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#d9e7f5" stop-opacity="1"></stop>
+</lineargradient>
+</defs>
+<!-- Head -->
+<rect fill="url(#g1)" height="30" rx="14" stroke="rgba(255,255,255,.7)" stroke-width="1" width="44" x="10" y="16"></rect>
+<!-- Antenna -->
+<line stroke="#ffffff" stroke-linecap="round" stroke-width="2" x1="32" x2="32" y1="10" y2="16"></line>
+<circle cx="32" cy="8" fill="#ffffff" r="3"></circle>
+<!-- Eyes -->
+<circle cx="24.5" cy="31" fill="#0A497B" r="3.2"></circle>
+<circle cx="39.5" cy="31" fill="#0A497B" r="3.2"></circle>
+<!-- Smile -->
+<path d="M24 38 C28 42, 36 42, 40 38" fill="none" stroke="#0A497B" stroke-linecap="round" stroke-width="2.4"></path>
+</svg>
+</div>
+<span class="sanare-bot-label" style="display:none">Asesor IA</span>
+</div>
+<div aria-label="Asistente IA Sanaré" aria-modal="true" id="sanare-ai-panel" role="dialog" style="position:fixed; right:18px; bottom:82px; width:380px; max-width:92vw; height:520px; max-height:70vh; background:#fff; border:1px solid rgba(10,73,123,.15); border-radius:18px; box-shadow:0 24px 50px rgba(10,73,123,.22); overflow:hidden; display:none; z-index:10000;">
+<div style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px; background:linear-gradient(90deg,#0A497B,#0A497B); color:#fff;">
+<div style="display:flex; align-items:center; gap:10px;">
+<img alt="Sanaré" src="assets/logo.png" style="width:26px;height:26px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25));"/>
+<strong style="font-size:14px;">Asesor IA</strong>
+</div>
+<div style="display:flex; gap:10px; align-items:center;">
+<button id="sanare-ai-settings" style="background:rgba(255,255,255,.18);border:0;padding:6px 10px;border-radius:10px;color:#fff;cursor:pointer" title="Configurar">⚙️</button>
+<a href="https://wa.me/" rel="noopener" style="background:rgba(255,255,255,.18);text-decoration:none;border:0;padding:6px 10px;border-radius:10px;color:#fff;" target="_blank" title="WhatsApp">WhatsApp</a>
+<button id="sanare-ai-close" style="background:rgba(255,255,255,.18);border:0;padding:6px 10px;border-radius:10px;color:#fff;cursor:pointer" title="Cerrar">✕</button>
+</div>
+</div>
+<div id="sanare-ai-messages" style="padding:14px; height:calc(100% - 112px); overflow:auto; background:linear-gradient(180deg,#fafcfe,#ffffff);">
+<div style="display:flex; gap:10px; align-items:flex-start; margin:6px 0;">
+<div style="width:28px;height:28px;background:#0A497B;border-radius:8px;"></div>
+<div style="background:#F6F9FC;border:1px solid rgba(10,73,123,.12); padding:10px 12px; border-radius:12px; max-width:80%; font-size:14px;color:#0A497B;">
+          ¡Hola! Soy tu asistente IA de Sanaré. Puedo resolver dudas sobre centros de infusión, servicios y preparación de citas. ¿En qué te ayudo?
+        </div>
+</div>
+</div>
+<form id="sanare-ai-form" style="display:flex; gap:8px; padding:12px; border-top:1px solid rgba(10,73,123,.1); background:#fff;">
+<input id="sanare-ai-input" placeholder="Escribe tu pregunta..." style="flex:1;border:1px solid rgba(10,73,123,.2);border-radius:12px;padding:10px 12px;font-size:14px;outline:none;" type="text"/>
+<button style="background:#0A497B;color:#fff;border:0;border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer" type="submit">Enviar</button>
+</form>
+</div>
+<script src="assets/ai.js"></script>
+</body>
+</html>
