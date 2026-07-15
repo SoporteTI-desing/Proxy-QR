@@ -21,6 +21,7 @@
 <div class="buttons">
 <button class="btn btn-primary" data-sede="narvarte">Sede Narvarte</button>
 <button class="btn" data-sede="toluca">Sede Toluca</button>
+<button class="btn" data-sede="morelia">Sede Morelia</button>
 <a class="btn btn-link" href="https://sanaresalud.com" rel="noopener" target="_blank">sanaresalud.com</a>
 <a class="btn" href="https://soporteti-desing.github.io/sanare-kam/" rel="noopener" target="_blank">Agenda con nuestros representantes</a>
 </div>
@@ -45,15 +46,17 @@
 <div id="sanare-ai-bubble">¿Cómo estás? ¿En qué puedo ayudarte?</div>
 </div>
 <script>
-  window.__IMAGES__ = {
+ window.__IMAGES__ = {
     narvarte: ["sedes/narvarte/img_01.jpeg", "sedes/narvarte/img_02.jpeg", "sedes/narvarte/img_03.jpeg", "sedes/narvarte/img_04.jpeg", "sedes/narvarte/img_05.jpeg", "sedes/narvarte/img_06.jpeg", "sedes/narvarte/img_07.jpeg", "sedes/narvarte/img_08.jpeg", "sedes/narvarte/img_09.jpeg", "sedes/narvarte/img_10.jpeg", "sedes/narvarte/img_11.jpeg", "sedes/narvarte/img_12.jpeg", "sedes/narvarte/img_13.jpeg", "sedes/narvarte/img_14.jpeg", "sedes/narvarte/img_15.jpeg", "sedes/narvarte/img_16.jpeg"],
+    morelia: ["sedes/morelia/morelia-001.png","sedes/morelia/morelia-002.webp","sedes/morelia/morelia-003.webp","sedes/morelia/morelia-004.webp","sedes/morelia/morelia-005.webp","sedes/morelia/morelia-006.webp","sedes/morelia/morelia-007.webp","sedes/morelia/morelia-008.webp","sedes/morelia/morelia-009.webp","sedes/morelia/morelia-010.webp","sedes/morelia/morelia-012.webp","sedes/morelia/morelia-013.webp","sedes/morelia/morelia-014.webp","sedes/morelia/morelia-016.webp","sedes/morelia/morelia-017.webp","sedes/morelia/morelia-018.webp","sedes/morelia/morelia-019.webp"],
     toluca: ["sedes/toluca/img_01.jpeg", "sedes/toluca/img_02.jpeg", "sedes/toluca/img_03.jpeg", "sedes/toluca/img_04.jpeg", "sedes/toluca/img_05.jpeg", "sedes/toluca/img_06.jpeg", "sedes/toluca/img_07.jpeg", "sedes/toluca/img_08.png", "sedes/toluca/img_09.jpeg", "sedes/toluca/img_10.jpeg", "sedes/toluca/img_11.jpeg", "sedes/toluca/img_12.jpeg", "sedes/toluca/img_13.jpeg", "sedes/toluca/img_14.jpeg", "sedes/toluca/img_15.jpeg", "sedes/toluca/img_16.png"]
   };
   </script>
 <script src="assets/js/app.js"></script><script>
 (function(){
-  const embedUrls = {
+const embedUrls = {
     narvarte: "https://www.google.com/maps?q=Sanar%C3%A9+Cl%C3%ADnica+de+Oncolog%C3%ADa+Anax%C3%A1goras+301+Narvarte+CDMX&output=embed",
+    morelia: "https://www.google.com/maps?q=Sanare+Morelia&output=embed",
     toluca:   "https://www.google.com/maps?q=Sanar%C3%A9+Toluca&output=embed"
   };
   const directLinks = {
@@ -78,7 +81,13 @@
     }
     frame.src = embedUrls[currentSede];
     link.href = directLinks[currentSede] || '#';
-    title.textContent = currentSede === 'narvarte' ? 'Sanaré Narvarte' : 'Sanaré Toluca';
+    if(currentSede === 'narvarte'){
+    title.textContent = 'Sanaré Narvarte';
+}else if(currentSede === 'toluca'){
+    title.textContent = 'Sanaré Toluca';
+}else{
+    title.textContent = 'Sanaré Morelia';
+}
   }
 
   function showCard(){ updateMap(); card.style.display='grid'; card.setAttribute('aria-hidden','false'); }
@@ -102,8 +111,9 @@
 })();
 </script><script>
 (function(){
-  const sedeLinks = {
+const sedeLinks = {
     narvarte: "https://www.google.com/search?q=sanar%C3%A9&oq=sanar%C3%A9+&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGIAEMgYIAhBFGEAyBggDEEUYOzIHCAQQABiABDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDQyNzZqMGo5qAIBsAIB8QWNVOg3C_5eEQ&sourceid=chrome&ie=UTF-8&lqi=CgdzYW5hcsOpSKmQ4aP0u4CACFoNEAAYACIHc2FuYXLDqZIBEml2X3RoZXJhcHlfc2VydmljZQ#rlimm=7535362148702032958",
+    morelia: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjAkYa50tWVAxUAAAAAHQAAAAAQGA..i&pvq=Cg0vZy8xMXo3eTcwa24zIhQKDnNhbmFyZSBtb3JlbGlhEAIYAw&lqi=Cg5zYW5hcmUgbW9yZWxpYUiDjcHTn76AgAhaGBAAEAEYABgBIg5zYW5hcmUgbW9yZWxpYZIBCm9uY29sb2dpc3Q&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=mx&sa=X&ftid=0xa587316bcb1705db:0xcc3c89514584edad",
     toluca: "https://www.google.com/search?q=sanar%C3%A9+Toluca&sca_esv=2369d6cd51414d5b&ei=oN8EaZ-YG_bLkPIP2Nqr6AY&ved=0ahUKEwif6Jfq6c6QAxX2JUQIHVjtCm0Q4dUDCBM&uact=5&oq=sanar%C3%A9+Toluca&gs_lp=Egxnd3Mtd2l6LXNlcnAiDnNhbmFyw6kgVG9sdWNhMgUQABiABDIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESLIiUM0EWLgZcAF4AZABAJgBqAGgAbEIqgEDMC43uAEDyAEA-AEBmAIIoAL2CMICChAAGLADGNYEGEfCAgoQABiABBhDGIoFwgIFEC4YgATCAgQQABgewgIGEAAYFhgemAMAiAYBkAYGkgcDMS43oAeiJrIHAzAuN7gH6QjCBwUyLTYuMsgHNA&sclient=gws-wiz-serp&lqi=Cg5zYW5hcsOpIFRvbHVjYVoQIg5zYW5hcsOpIHRvbHVjYZIBCm9uY29sb2dpc3Q#rlimm=15311468634149742196"
   };
   let currentSede = null;
