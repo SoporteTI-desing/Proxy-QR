@@ -66,6 +66,7 @@
   }
 
   // Buttons
+  window.openSanareGallery = openGallery;
   document.querySelectorAll('[data-sede]').forEach(btn=>{
     btn.addEventListener('click', ()=> openGallery(btn.dataset.sede));
   });

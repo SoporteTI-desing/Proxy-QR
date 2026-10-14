@@ -70,11 +70,15 @@
 
   // Respuestas locales rápidas
   const faq = [
-    { q: /horarios|abren|cierran|hora/i, a: "Nuestros centros operan de Lunes a Viernes 7:00–20:00 y Sábados 8:00–14:00. Te ayudamos a agendar según disponibilidad." },
-    { q: /ubicaci(ó|o)n|donde|direcci(ó|o)n|sede/i, a: "Contamos con varias sedes. Usa los botones del carrusel para ver fotos y ubicar la sede. Si me dices tu ciudad, te sugiero la más cercana." },
+    { q: /horarios|abren|cierran|hora/i, a: "Nuestros centros operan de Lunes a Viernes de 8:00 a 17:00. Te ayudamos a agendar según disponibilidad." },
+    { q: /ubicaci(ó|o)n|donde|direcci(ó|o)n|sede/i, a: "Contamos con sedes en Narvarte (CDMX: Anaxágoras 301, Tel 55 5255 8403), Santa Fe (CDMX: Guillermo González Camarena 1205, Tel 55 5292 3559), Morelia (Michoacán: Gral. Pedro María Anaya 551, Tel 55 5255 8403) y Tijuana (B.C.: Blvd. Padre Kino 10014 int 304, Tel 664 666 0852)." },
+    { q: /tijuana/i, a: "Sede Tijuana: Blvd. Padre Kino 10014, int. 304, Zona Urbana Río Tijuana, C.P. 22010. Tel: 664 666 0852." },
+    { q: /santa\s*fe/i, a: "Sede Santa Fe: C. Guillermo González Camarena 1205, Santa Fe, Álvaro Obregón, C.P. 01210, CDMX (Garden Santa Fe, E1). Tel: 55 5292 3559." },
+    { q: /narvarte/i, a: "Sede Narvarte: Calle Anaxágoras 301 esq. La Morena, Col. Narvarte Poniente, Benito Juárez, C.P. 03020, CDMX. Tel: 55 5255 8403." },
+    { q: /morelia/i, a: "Sede Morelia: General Pedro María Anaya 551, Chapultepec Sur, C.P. 58260, Morelia, Michoacán. Tel: 55 5255 8403." },
     { q: /costo|precio|cotiz/i, a: "Los costos dependen del medicamento y del tiempo de infusión. Podemos cotizarte: indícame medicamento/servicio y datos básicos." },
     { q: /preparaci(ó|o)n|ayuno|instrucciones/i, a: "La preparación depende del tratamiento. Generalmente: descanso previo, hidratación y confirmar alergias. Podemos enviarte una guía específica." },
-    { q: /contacto|cita|whats|whatsapp/i, a: "Puedes escribirnos por WhatsApp con el botón en la parte superior del chat. También puedo orientarte aquí." },
+    { q: /contacto|cita|whats|whatsapp|tel(é|e)fono/i, a: "Puedes llamarnos directamente a cualquiera de nuestras sedes (Narvarte: 55 5255 8403, Santa Fe: 55 5292 3559, Tijuana: 664 666 0852) o escribirnos por WhatsApp." },
     { q: /seguro|aseguradora|reembolso/i, a: "Trabajamos con esquemas de reembolso. Te orientamos con tu aseguradora y documentación necesaria." }
   ];
 
@@ -95,7 +99,7 @@
             { role: 'system', content: 'Eres un asistente de Sanaré, tono cálido y profesional. Responde en español, breve y claro, y ofrece pasos accionables. Si te piden precios, pide datos del tratamiento. No inventes direcciones: remite al carrusel de sedes.' },
             ...history,
             { role: 'user', content: userText }
-          ])
+          ]
         })
       });
       if (!res.ok) throw new Error('HTTP ' + res.status);
