@@ -11,7 +11,7 @@
 <body>
 <!-- Video Header with centered logo -->
 <section class="video-header">
-<video autoplay="" class="vh-video" loop="" muted="" playsinline="" src="assets/video/header.mp4"></video>
+<video autoplay="" class="vh-video" id="heroVideo" loop="" muted="" playsinline="" preload="auto" src="assets/video/header.mp4" webkit-playsinline=""></video>
 <div class="vh-brand"><img alt="Sanaré" class="vh-logo" src="assets/img/logo.png"/></div>
 <div class="vh-overlay"></div>
 </section>
@@ -20,13 +20,132 @@
 <h1>Clínica de Infusión</h1>
 <div class="buttons">
 <button class="btn btn-primary" data-sede="narvarte">Sede Narvarte</button>
-<button class="btn" data-sede="toluca">Sede Toluca</button>
+<button class="btn" data-sede="santafe">Sede Santa Fe</button>
 <button class="btn" data-sede="morelia">Sede Morelia</button>
+<button class="btn" data-sede="tijuana">Sede Tijuana</button>
 <a class="btn btn-link" href="https://sanaresalud.com" rel="noopener" target="_blank">sanaresalud.com</a>
 <a class="btn" href="https://soporteti-desing.github.io/sanare-kam/" rel="noopener" target="_blank">Agenda con nuestros representantes</a>
 </div>
 </div>
 </header>
+
+<!-- Sedes Directory Section with Addresses & Phones -->
+<section class="sedes-section">
+  <div class="sedes-header">
+    <h2 class="sedes-title">Nuestras Sedes</h2>
+    <p class="sedes-subtitle">Direcciones, teléfonos de contacto y recorridos fotográficos</p>
+  </div>
+  <div class="sedes-grid">
+    <!-- Narvarte -->
+    <article class="sede-card">
+      <div class="sede-card-thumb" data-sede="narvarte" role="button" tabindex="0" title="Ver fotos de Sede Narvarte">
+        <img alt="Sede Narvarte" loading="lazy" src="sedes/narvarte/01.jpg"/>
+        <span class="sede-card-badge">CDMX</span>
+      </div>
+      <div class="sede-card-body">
+        <h3 class="sede-card-title">Sede Narvarte</h3>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📍</span>
+          <span>Calle Anaxágoras 301 esq. La Morena, Col. Narvarte Poniente, Benito Juárez, C.P. 03020, CDMX</span>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📞</span>
+          <a class="sede-phone-link" href="tel:+525552558403">55 5255 8403</a>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">🕒</span>
+          <span>Lun–Vier · 8:00 a 17:00</span>
+        </div>
+        <div class="sede-card-actions">
+          <button class="btn-card-gallery" data-sede="narvarte" type="button">📷 Ver Fotos</button>
+          <a class="btn-card-map" href="https://www.google.com/maps/search/?api=1&amp;query=Sanar%C3%A9%20Cl%C3%ADnica%20de%20Oncolog%C3%ADa%20Anax%C3%A1goras%20301%20Narvarte%20CDMX" rel="noopener" target="_blank">🗺️ Google Maps</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Santa Fe -->
+    <article class="sede-card">
+      <div class="sede-card-thumb" data-sede="santafe" role="button" tabindex="0" title="Ver fotos de Sede Santa Fe">
+        <img alt="Sede Santa Fe" loading="lazy" src="sedes/santafe/01.jpg"/>
+        <span class="sede-card-badge">CDMX</span>
+      </div>
+      <div class="sede-card-body">
+        <h3 class="sede-card-title">Sede Santa Fe</h3>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📍</span>
+          <span>C. Guillermo González Camarena 1205, Santa Fe, Álvaro Obregón, C.P. 01210, CDMX (Garden Santa Fe, E1)</span>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📞</span>
+          <a class="sede-phone-link" href="tel:+525552923559">55 5292 3559</a>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">🕒</span>
+          <span>Lun–Vier · 8:00 a 17:00</span>
+        </div>
+        <div class="sede-card-actions">
+          <button class="btn-card-gallery" data-sede="santafe" type="button">📷 Ver Fotos</button>
+          <a class="btn-card-map" href="https://www.google.com/maps/search/?api=1&amp;query=C.+Guillermo+Gonzalez+Camarena+1205%2C+Santa+Fe%2C+Alvaro+Obregon%2C+01210+Ciudad+de+Mexico%2C+CDMX" rel="noopener" target="_blank">🗺️ Google Maps</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Morelia -->
+    <article class="sede-card">
+      <div class="sede-card-thumb" data-sede="morelia" role="button" tabindex="0" title="Ver fotos de Sede Morelia">
+        <img alt="Sede Morelia" loading="lazy" src="sedes/morelia/01.jpg"/>
+        <span class="sede-card-badge">Michoacán</span>
+      </div>
+      <div class="sede-card-body">
+        <h3 class="sede-card-title">Sede Morelia</h3>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📍</span>
+          <span>General Pedro María Anaya 551, Chapultepec Sur, C.P. 58260, Morelia, Michoacán</span>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📞</span>
+          <a class="sede-phone-link" href="tel:+525552558403">55 5255 8403</a>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">🕒</span>
+          <span>Lun–Vier · 8:00 a 17:00</span>
+        </div>
+        <div class="sede-card-actions">
+          <button class="btn-card-gallery" data-sede="morelia" type="button">📷 Ver Fotos</button>
+          <a class="btn-card-map" href="https://www.google.com/maps/search/?api=1&amp;query=General+Pedro+Mar%C3%ADa+Anaya+551%2C+Chapultepec+Sur%2C+C.P.+58260%2C+Morelia%2C+Michoac%C3%A1n" rel="noopener" target="_blank">🗺️ Google Maps</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tijuana -->
+    <article class="sede-card">
+      <div class="sede-card-thumb" data-sede="tijuana" role="button" tabindex="0" title="Ver fotos de Sede Tijuana">
+        <img alt="Sede Tijuana" loading="lazy" src="sedes/tijuana/01.jpg"/>
+        <span class="sede-card-badge">Baja California</span>
+      </div>
+      <div class="sede-card-body">
+        <h3 class="sede-card-title">Sede Tijuana</h3>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📍</span>
+          <span>Boulevard Padre Kino 10014, int. 304, Zona Urbana Río Tijuana, C.P. 22010, Tijuana, B.C.</span>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">📞</span>
+          <a class="sede-phone-link" href="tel:+526646660852">664 666 0852</a>
+        </div>
+        <div class="sede-card-item">
+          <span class="sede-card-icon">🕒</span>
+          <span>Lun–Vier · 8:00 a 17:00</span>
+        </div>
+        <div class="sede-card-actions">
+          <button class="btn-card-gallery" data-sede="tijuana" type="button">📷 Ver Fotos</button>
+          <a class="btn-card-map" href="https://www.google.com/maps/search/?api=1&amp;query=Boulevard+Padre+Kino+10014+interior+304+Zona+Urbana+Rio+Tijuana+Tijuana+Baja+California+CP+22010" rel="noopener" target="_blank">🗺️ Google Maps</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- Modal Gallery -->
 <div aria-hidden="true" class="lightbox" id="lightbox">
 <div class="lightbox-backdrop" data-close=""></div>
@@ -40,115 +159,240 @@
 <div class="counter"><span id="current">1</span> / <span id="total">1</span></div>
 <button aria-label="Siguiente" class="nav" id="next">›</button>
 </div>
-<div class="location-bar" id="locationBar" style="display:none"><span>Ubicación: </span><a href="#" id="locationLink" rel="noopener" target="_blank">Abrir en Google Maps / Búsqueda</a></div><div class="hint">Doble clic para zoom • Arrastra para mover • Esc para cerrar</div>
-<div aria-hidden="true" class="map-card" id="mapCard"><div class="map-card-header"><div class="map-card-title" id="mapTitle">Ubicación</div><button aria-label="Ocultar mapa" class="map-card-close" id="mapClose">×</button></div><iframe allowfullscreen="True" id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank" title="Mapa de la sede"></iframe><div class="map-card-footer"><a href="#" id="mapExternal" rel="noopener" target="_blank">Abrir en Google Maps</a></div></div><button aria-label="Ver ubicación" class="map-toggle" id="mapToggle" type="button">Mapa</button></div>
+
+<!-- Enhanced Sede Info Bar in Modal -->
+<div class="location-bar" id="locationBar">
+  <div class="location-info">
+    <div class="location-name" id="locationName">Sede Narvarte</div>
+    <div class="location-address" id="locationAddress">Dirección</div>
+    <div class="location-contact">
+      <span>📞 <a href="#" id="locationPhone">Teléfono</a></span>
+      <span>🕒 <span id="locationHours">Horario</span></span>
+    </div>
+  </div>
+  <div class="location-actions">
+    <a class="btn-loc-action" href="#" id="locationLink" rel="noopener" target="_blank">🗺️ Abrir en Maps</a>
+    <button class="btn-loc-action btn-primary-map" id="mapToggle" type="button">📍 Ver Mapa</button>
+  </div>
+</div>
+<div class="hint">Doble clic para zoom • Arrastra para mover • Esc para cerrar</div>
+
+<div aria-hidden="true" class="map-card" id="mapCard">
+  <div class="map-card-header">
+    <div class="map-card-title" id="mapTitle">Ubicación</div>
+    <button aria-label="Ocultar mapa" class="map-card-close" id="mapClose">×</button>
+  </div>
+  <iframe allowfullscreen="True" id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank" title="Mapa de la sede"></iframe>
+  <div class="map-card-footer">
+    <a href="#" id="mapExternal" rel="noopener" target="_blank">Abrir en Google Maps</a>
+  </div>
+</div>
+</div>
 <!-- Speech bubble greeting -->
 <div id="sanare-ai-bubble">¿Cómo estás? ¿En qué puedo ayudarte?</div>
 </div>
+
 <script>
  window.__IMAGES__ = {
-    narvarte: ["sedes/narvarte/img_01.jpeg", "sedes/narvarte/img_02.jpeg", "sedes/narvarte/img_03.jpeg", "sedes/narvarte/img_04.jpeg", "sedes/narvarte/img_05.jpeg", "sedes/narvarte/img_06.jpeg", "sedes/narvarte/img_07.jpeg", "sedes/narvarte/img_08.jpeg", "sedes/narvarte/img_09.jpeg", "sedes/narvarte/img_10.jpeg", "sedes/narvarte/img_11.jpeg", "sedes/narvarte/img_12.jpeg", "sedes/narvarte/img_13.jpeg", "sedes/narvarte/img_14.jpeg", "sedes/narvarte/img_15.jpeg", "sedes/narvarte/img_16.jpeg"],
-    morelia: ["sedes/morelia/morelia-001.png","sedes/morelia/morelia-002.webp","sedes/morelia/morelia-003.webp","sedes/morelia/morelia-004.webp","sedes/morelia/morelia-005.webp","sedes/morelia/morelia-006.webp","sedes/morelia/morelia-007.webp","sedes/morelia/morelia-008.webp","sedes/morelia/morelia-009.webp","sedes/morelia/morelia-010.webp","sedes/morelia/morelia-012.webp","sedes/morelia/morelia-013.webp","sedes/morelia/morelia-014.webp","sedes/morelia/morelia-016.webp","sedes/morelia/morelia-017.webp","sedes/morelia/morelia-018.webp","sedes/morelia/morelia-019.webp"],
-    toluca: ["sedes/toluca/img_01.jpeg", "sedes/toluca/img_02.jpeg", "sedes/toluca/img_03.jpeg", "sedes/toluca/img_04.jpeg", "sedes/toluca/img_05.jpeg", "sedes/toluca/img_06.jpeg", "sedes/toluca/img_07.jpeg", "sedes/toluca/img_08.png", "sedes/toluca/img_09.jpeg", "sedes/toluca/img_10.jpeg", "sedes/toluca/img_11.jpeg", "sedes/toluca/img_12.jpeg", "sedes/toluca/img_13.jpeg", "sedes/toluca/img_14.jpeg", "sedes/toluca/img_15.jpeg", "sedes/toluca/img_16.png"]
+    narvarte: [
+      "sedes/narvarte/01.jpg", "sedes/narvarte/02.jpg", "sedes/narvarte/03.jpg",
+      "sedes/narvarte/04.jpg", "sedes/narvarte/05.jpg", "sedes/narvarte/06.jpg",
+      "sedes/narvarte/07.jpg", "sedes/narvarte/08.jpg", "sedes/narvarte/09.jpg",
+      "sedes/narvarte/10.jpg", "sedes/narvarte/11.jpg", "sedes/narvarte/12.jpg",
+      "sedes/narvarte/13.jpg"
+    ],
+    santafe: [
+      "sedes/santafe/01.jpg"
+    ],
+    morelia: [
+      "sedes/morelia/01.jpg", "sedes/morelia/02.jpg", "sedes/morelia/03.jpg",
+      "sedes/morelia/04.jpg", "sedes/morelia/05.jpg", "sedes/morelia/06.jpg",
+      "sedes/morelia/07.jpg", "sedes/morelia/08.jpg", "sedes/morelia/09.jpg",
+      "sedes/morelia/10.jpg", "sedes/morelia/12.jpg"
+    ],
+    tijuana: [
+      "sedes/tijuana/01.jpg", "sedes/tijuana/02.png", "sedes/tijuana/03.jpg",
+      "sedes/tijuana/04.jpg", "sedes/tijuana/05.jpg", "sedes/tijuana/06.jpg",
+      "sedes/tijuana/07.jpg"
+    ]
   };
-  </script>
-<script src="assets/js/app.js"></script><script>
-(function(){
-const embedUrls = {
-    narvarte: "https://www.google.com/maps?q=Sanar%C3%A9+Cl%C3%ADnica+de+Oncolog%C3%ADa+Anax%C3%A1goras+301+Narvarte+CDMX&output=embed",
-    morelia: "https://www.google.com/maps?q=Sanare+Morelia&output=embed",
-    toluca:   "https://www.google.com/maps?q=Sanar%C3%A9+Toluca&output=embed"
-  };
-  const directLinks = {
-    narvarte: "https://www.google.com/maps/search/?api=1&query=Sanar%C3%A9%20Cl%C3%ADnica%20de%20Oncolog%C3%ADa%20Anax%C3%A1goras%20301%20Narvarte%20CDMX",
-    toluca:   "https://www.google.com/maps/search/?api=1&query=Sanar%C3%A9%20Toluca"
-  };
+</script>
+<script src="assets/js/app.js"></script>
 
-  let currentSede = null;
-  const lb = document.getElementById('lightbox');
-  const toggle = document.getElementById('mapToggle');
-  const card = document.getElementById('mapCard');
-  const frame = document.getElementById('mapFrame');
-  const link = document.getElementById('mapExternal');
-  const title = document.getElementById('mapTitle');
-  const close = document.getElementById('mapClose');
+<!-- Mobile Video Autoplay Controller -->
+<script>
+(function initVideoAutoplay(){
+  const vid = document.getElementById('heroVideo');
+  if(!vid) return;
 
-  function updateMap(){
-    if(!currentSede || !embedUrls[currentSede]){
-      card.setAttribute('aria-hidden','true');
-      card.style.display = 'none';
-      return;
+  vid.muted = true;
+  vid.defaultMuted = true;
+  vid.playsInline = true;
+  vid.setAttribute('muted', '');
+  vid.setAttribute('playsinline', '');
+  vid.setAttribute('webkit-playsinline', '');
+
+  function attemptPlay(){
+    const p = vid.play();
+    if(p !== undefined){
+      p.catch(function(){
+        // Autoplay restricted by device power saving or browser policy
+      });
     }
-    frame.src = embedUrls[currentSede];
-    link.href = directLinks[currentSede] || '#';
-    if(currentSede === 'narvarte'){
-    title.textContent = 'Sanaré Narvarte';
-}else if(currentSede === 'toluca'){
-    title.textContent = 'Sanaré Toluca';
-}else{
-    title.textContent = 'Sanaré Morelia';
-}
   }
 
-  function showCard(){ updateMap(); card.style.display='grid'; card.setAttribute('aria-hidden','false'); }
-  function hideCard(){ card.style.display='none'; card.setAttribute('aria-hidden','true'); }
+  // Attempt right away
+  attemptPlay();
 
-  toggle.addEventListener('click', ()=>{
-    if(card.getAttribute('aria-hidden')==='true'){ showCard(); } else { hideCard(); }
-  });
-  close.addEventListener('click', hideCard);
-
-  document.querySelectorAll('[data-sede]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      currentSede = btn.getAttribute('data-sede');
-      lb.dataset.sede = currentSede;
-      updateMap();
-      hideCard(); // start hidden until user hits "Mapa"
-    }, {capture:true});
-  });
-
-  hideCard();
-})();
-</script><script>
-(function(){
-const sedeLinks = {
-    narvarte: "https://www.google.com/search?q=sanar%C3%A9&oq=sanar%C3%A9+&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgcIARAAGIAEMgYIAhBFGEAyBggDEEUYOzIHCAQQABiABDIGCAUQRRg9MgYIBhBFGD0yBggHEEUYPdIBCDQyNzZqMGo5qAIBsAIB8QWNVOg3C_5eEQ&sourceid=chrome&ie=UTF-8&lqi=CgdzYW5hcsOpSKmQ4aP0u4CACFoNEAAYACIHc2FuYXLDqZIBEml2X3RoZXJhcHlfc2VydmljZQ#rlimm=7535362148702032958",
-    morelia: "https://maps.google.com/maps?vet=10CAAQoqAOahcKEwjAkYa50tWVAxUAAAAAHQAAAAAQGA..i&pvq=Cg0vZy8xMXo3eTcwa24zIhQKDnNhbmFyZSBtb3JlbGlhEAIYAw&lqi=Cg5zYW5hcmUgbW9yZWxpYUiDjcHTn76AgAhaGBAAEAEYABgBIg5zYW5hcmUgbW9yZWxpYZIBCm9uY29sb2dpc3Q&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=mx&sa=X&ftid=0xa587316bcb1705db:0xcc3c89514584edad",
-    toluca: "https://www.google.com/search?q=sanar%C3%A9+Toluca&sca_esv=2369d6cd51414d5b&ei=oN8EaZ-YG_bLkPIP2Nqr6AY&ved=0ahUKEwif6Jfq6c6QAxX2JUQIHVjtCm0Q4dUDCBM&uact=5&oq=sanar%C3%A9+Toluca&gs_lp=Egxnd3Mtd2l6LXNlcnAiDnNhbmFyw6kgVG9sdWNhMgUQABiABDIIEAAYgAQYogQyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wUyCBAAGIAEGKIESLIiUM0EWLgZcAF4AZABAJgBqAGgAbEIqgEDMC43uAEDyAEA-AEBmAIIoAL2CMICChAAGLADGNYEGEfCAgoQABiABBhDGIoFwgIFEC4YgATCAgQQABgewgIGEAAYFhgemAMAiAYBkAYGkgcDMS43oAeiJrIHAzAuN7gH6QjCBwUyLTYuMsgHNA&sclient=gws-wiz-serp&lqi=Cg5zYW5hcsOpIFRvbHVjYVoQIg5zYW5hcsOpIHRvbHVjYZIBCm9uY29sb2dpc3Q#rlimm=15311468634149742196"
-  };
-  let currentSede = null;
-  const lb = document.getElementById('lightbox');
-  const linkEl = document.getElementById('locationLink');
-  const barEl  = document.getElementById('locationBar');
-  function updateLink(){
-    if(!currentSede || !sedeLinks[currentSede]){
-      barEl.style.display = 'none';
-      return;
-    }
-    barEl.style.display = 'flex';
-    linkEl.href = sedeLinks[currentSede];
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', attemptPlay);
   }
-  // Hook the sede buttons
-  document.querySelectorAll('[data-sede]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{
-      const s = btn.getAttribute('data-sede');
-      currentSede = s;
-      updateLink();
-      // Mark on the lightbox which sede is active (for potential use by other scripts)
-      lb.dataset.sede = s;
-    }, {capture:true}); // capture to run even if other listeners stop propagation
+  window.addEventListener('load', attemptPlay);
+  vid.addEventListener('loadeddata', attemptPlay, { once: true });
+  vid.addEventListener('canplay', attemptPlay, { once: true });
+
+  // Fallback for strict mobile policies (iOS low-power mode, Android data saver):
+  // Triggers video smoothly on the very first touch or scroll
+  const touchEvents = ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'];
+  function onFirstTouch(){
+    attemptPlay();
+    touchEvents.forEach(function(ev){
+      window.removeEventListener(ev, onFirstTouch, { capture: true });
+      document.removeEventListener(ev, onFirstTouch, { capture: true });
+    });
+  }
+  touchEvents.forEach(function(ev){
+    window.addEventListener(ev, onFirstTouch, { capture: true, passive: true });
+    document.addEventListener(ev, onFirstTouch, { capture: true, passive: true });
   });
-  // Also update when lightbox becomes visible (in case it opens by other triggers)
-  const observer = new MutationObserver(updateLink);
-  observer.observe(lb, { attributes:true, attributeFilter:['aria-hidden','class','data-sede'] });
-  // Initialize hidden
-  barEl.style.display = 'none';
+
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) attemptPlay();
+  });
 })();
 </script>
+
+<!-- Unified Sedes Data & Map Controller -->
+<script>
+(function(){
+  const SEDES_DATA = {
+    narvarte: {
+      name: "Sede Narvarte",
+      address: "Calle Anaxágoras 301 esq. La Morena, Col. Narvarte Poniente, Benito Juárez, C.P. 03020, CDMX",
+      phone: "55 5255 8403",
+      phoneRaw: "+525552558403",
+      hours: "Lun–Vier · 8:00 a 17:00",
+      mapEmbed: "https://www.google.com/maps?q=Sanar%C3%A9+Cl%C3%ADnica+de+Oncolog%C3%ADa+Anax%C3%A1goras+301+Narvarte+CDMX&output=embed",
+      mapDirect: "https://www.google.com/maps/search/?api=1&query=Sanar%C3%A9%20Cl%C3%ADnica%20de%20Oncolog%C3%ADa%20Anax%C3%A1goras%20301%20Narvarte%20CDMX"
+    },
+    santafe: {
+      name: "Sede Santa Fe",
+      address: "C. Guillermo González Camarena 1205, Santa Fe, Álvaro Obregón, C.P. 01210, CDMX (Garden Santa Fe, E1)",
+      phone: "55 5292 3559",
+      phoneRaw: "+525552923559",
+      hours: "Lun–Vier · 8:00 a 17:00",
+      mapEmbed: "https://www.google.com/maps?q=Guillermo+Gonzalez+Camarena+1205+Santa+Fe+CDMX&output=embed",
+      mapDirect: "https://www.google.com/maps/search/?api=1&query=C.+Guillermo+Gonzalez+Camarena+1205%2C+Santa+Fe%2C+Alvaro+Obregon%2C+01210+Ciudad+de+Mexico%2C+CDMX"
+    },
+    morelia: {
+      name: "Sede Morelia",
+      address: "General Pedro María Anaya 551, Chapultepec Sur, C.P. 58260, Morelia, Michoacán",
+      phone: "55 5255 8403",
+      phoneRaw: "+525552558403",
+      hours: "Lun–Vier · 8:00 a 17:00",
+      mapEmbed: "https://www.google.com/maps?q=General+Pedro+Maria+Anaya+551+Chapultepec+Sur+Morelia&output=embed",
+      mapDirect: "https://www.google.com/maps/search/?api=1&query=General+Pedro+Mar%C3%ADa+Anaya+551%2C+Chapultepec+Sur%2C+C.P.+58260%2C+Morelia%2C+Michoac%C3%A1n"
+    },
+    tijuana: {
+      name: "Sede Tijuana",
+      address: "Boulevard Padre Kino 10014, int. 304, Zona Urbana Río Tijuana, C.P. 22010, Tijuana, B.C.",
+      phone: "664 666 0852",
+      phoneRaw: "+526646660852",
+      hours: "Lun–Vier · 8:00 a 17:00",
+      mapEmbed: "https://www.google.com/maps?q=Boulevard+Padre+Kino+10014+Zona+Urbana+Rio+Tijuana&output=embed",
+      mapDirect: "https://www.google.com/maps/search/?api=1&query=Boulevard+Padre+Kino+10014+interior+304+Zona+Urbana+Rio+Tijuana+Tijuana+Baja+California+CP+22010"
+    }
+  };
+
+  let currentSede = 'narvarte';
+  const lb = document.getElementById('lightbox');
+  const barEl = document.getElementById('locationBar');
+  const nameEl = document.getElementById('locationName');
+  const addrEl = document.getElementById('locationAddress');
+  const phoneEl = document.getElementById('locationPhone');
+  const hoursEl = document.getElementById('locationHours');
+  const linkEl = document.getElementById('locationLink');
+
+  const card = document.getElementById('mapCard');
+  const frame = document.getElementById('mapFrame');
+  const linkExternal = document.getElementById('mapExternal');
+  const mapTitle = document.getElementById('mapTitle');
+  const toggleBtn = document.getElementById('mapToggle');
+  const closeBtn = document.getElementById('mapClose');
+
+  function updateSedeInfo(sedeKey){
+    const data = SEDES_DATA[sedeKey];
+    if(!data) return;
+    currentSede = sedeKey;
+    if(lb) lb.dataset.sede = sedeKey;
+    if(nameEl) nameEl.textContent = data.name;
+    if(addrEl) addrEl.textContent = data.address;
+    if(phoneEl){
+      phoneEl.textContent = data.phone;
+      phoneEl.href = 'tel:' + data.phoneRaw;
+    }
+    if(hoursEl) hoursEl.textContent = data.hours;
+    if(linkEl) linkEl.href = data.mapDirect;
+
+    if(mapTitle) mapTitle.textContent = data.name;
+    if(frame) frame.src = data.mapEmbed;
+    if(linkExternal) linkExternal.href = data.mapDirect;
+    if(barEl) barEl.style.display = 'flex';
+  }
+
+  function showMap(){
+    updateSedeInfo(currentSede);
+    card.style.display = 'grid';
+    card.setAttribute('aria-hidden','false');
+  }
+
+  function hideMap(){
+    card.style.display = 'none';
+    card.setAttribute('aria-hidden','true');
+  }
+
+  if(toggleBtn){
+    toggleBtn.addEventListener('click', ()=>{
+      if(card.getAttribute('aria-hidden') === 'true'){
+        showMap();
+      } else {
+        hideMap();
+      }
+    });
+  }
+
+  if(closeBtn) closeBtn.addEventListener('click', hideMap);
+
+  document.querySelectorAll('[data-sede]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const s = el.getAttribute('data-sede');
+      if(s){
+        updateSedeInfo(s);
+        hideMap();
+      }
+    }, { capture: true });
+  });
+
+  // Initialize with Narvarte
+  updateSedeInfo('narvarte');
+  hideMap();
+})();
+</script>
+
 <!-- Legend Footer -->
 <footer id="sanare-legend" style="width:100%;text-align:center;padding:14px 8px;margin-top:32px;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans','Apple Color Emoji','Segoe UI Emoji';letter-spacing:.5px">
 <div style="display:inline-block;padding:10px 18px;border-radius:999px;background:#fff;color:#0A497B;border:1px solid rgba(10,73,123,.15);box-shadow:0 6px 18px rgba(10,73,123,.08);font-weight:600;text-transform:uppercase;font-size:13px">
-      Centros de Infusión 2025
+      Centros de Infusión Sanaré
     </div>
 </footer>
 <style id="sanare-ai-bubble-style">
